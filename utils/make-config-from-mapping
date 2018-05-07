@@ -1,0 +1,7 @@
+#!/usr/bin/env jq -rf
+def flatten_object:
+	to_entries
+	| map((.key as $scope | .value | objects | to_entries | map(.key |= $scope + "/" + .)) // .)
+	| flatten
+	| from_entries;
+flatten_object | to_entries | sort_by(.value) | map("\(.value)=\(.key)")[]

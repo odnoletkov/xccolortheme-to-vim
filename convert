@@ -1,0 +1,2 @@
+#!/bin/bash
+plutil -convert json -o - -- "${1:--}" | ./convert.jq --argfile mapping <(./gen-mapping config)

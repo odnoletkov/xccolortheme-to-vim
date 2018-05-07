@@ -1,0 +1,2 @@
+#!/usr/bin/env jq -sR -f
+split("\n")[:-1] | map(split("=") | {key:.[0],value:.[1]}) | from_entries
